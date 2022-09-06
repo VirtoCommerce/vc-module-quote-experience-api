@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<module>
+    <id>VirtoCommerce.QuoteExperienceApi</id>
+    <version>3.200.0</version>
+    <version-tag></version-tag>
+
+    <platformVersion>3.254.0</platformVersion>
+    <dependencies>
+        <dependency id="VirtoCommerce.ExperienceApi" version="3.233.0" />
+    </dependencies>
+
+    <title>VirtoCommerce QuoteExperienceApi module</title>
+    <description>VirtoCommerce Quote Experience API module</description>
+
+    <authors>
+        <author>Artem Dudarev</author>
+    </authors>
+    <owners>
+        <owner>VirtoCommerce</owner>
+    </owners>
+
+    <projectUrl>https://github.com/VirtoCommerce/vc-module-quote-experience-api</projectUrl>
+    <iconUrl>Modules/$(VirtoCommerce.QuoteExperienceApi)/Content/logo.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+
+    <assemblyFile>VirtoCommerce.QuoteExperienceApi.Web.dll</assemblyFile>
+    <moduleType>VirtoCommerce.QuoteExperienceApi.Web.Module, VirtoCommerce.QuoteExperienceApi.Web</moduleType>
+
+    <releaseNotes>First version.</releaseNotes>
+    <copyright>Copyright © 2022 VirtoCommerce. All rights reserved</copyright>
+    <tags>extension module</tags>
+    <useFullTypeNameInSwagger>false</useFullTypeNameInSwagger>
+</module>
