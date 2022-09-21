@@ -1,5 +1,8 @@
+Antlr4.Runtime.Standard.dll
+AutoCompare.dll
 AutoMapper.dll
 AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+CsvHelper.dll
 FluentAssertions.dll
 GraphQL.dll
 GraphQL.Authorization.dll
@@ -15,4 +18,8 @@ MediatR.Extensions.Microsoft.DependencyInjection.dll
 Microsoft.Data.SqlClient.SNI.dll
 Nager.Country.dll
 PipelineNet.dll
+sni.dll
 TimeZoneConverter.dll
+VirtoCommerce.Tools.dll
+VirtoCommerce.XDigitalCatalog.dll
+VirtoCommerce.XPurchase.dll
