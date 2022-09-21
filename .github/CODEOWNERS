@@ -1,0 +1,19 @@
+# Common settings
+
+.github/* @mvktsk
+.gitignore @mvktsk
+.dockerignore @mvktsk
+
+# Main Code and Tests
+
+src/* @VirtoCommerce/platform
+tests/* @VirtoCommerce/platform
+.editorconfig @VirtoCommerce/platform
+.gitignore @VirtoCommerce/platform
+Directory.Build.props @VirtoCommerce/platform
+module.ignore @VirtoCommerce/platform
+VirtoCommerce.QuoteExperienceApi.sln  @VirtoCommerce/platform
+VirtoCommerce.QuoteExperienceApi.sln.DotSettings @VirtoCommerce/platform
+
+# Docs
+docs/* @zashchitnik-kuka
