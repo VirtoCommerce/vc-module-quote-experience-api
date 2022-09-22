@@ -1,5 +1,5 @@
 {
-    "artifactKey": "VirtoCommerce.QuoteExperienceApi",
+    "artifactKey": "VirtoCommerce.ExperienceApi",
     "deployRepo": "vc-deploy-dev",
     "cmPath": "platform-dev/resources/deployment-cm.yaml",
     "dev": {
