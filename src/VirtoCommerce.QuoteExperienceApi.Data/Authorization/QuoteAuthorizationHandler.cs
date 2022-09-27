@@ -3,8 +3,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using VirtoCommerce.ExperienceApiModule.Core;
 using VirtoCommerce.Platform.Core;
+using VirtoCommerce.QuoteExperienceApi.Data.Aggregates;
 using VirtoCommerce.QuoteExperienceApi.Data.Queries;
-using VirtoCommerce.QuoteModule.Core.Models;
 
 namespace VirtoCommerce.QuoteExperienceApi.Data.Authorization;
 
@@ -20,8 +20,8 @@ public class QuoteAuthorizationHandler : AuthorizationHandler<QuoteAuthorization
 
             switch (context.Resource)
             {
-                case QuoteRequest quote:
-                    result = quote.CustomerId == currentUserId;
+                case QuoteAggregate quote:
+                    result = quote.Model.CustomerId == currentUserId;
                     break;
                 case QuotesQuery query:
                     query.CustomerId = currentUserId;
