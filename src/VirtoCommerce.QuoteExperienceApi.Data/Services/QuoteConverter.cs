@@ -23,7 +23,6 @@ public class QuoteConverter : IQuoteConverter
     {
         var result = AbstractTypeFactory<QuoteRequest>.TryCreateInstance();
 
-        result.ChannelId = cart.ChannelId;
         result.Comment = cart.Comment;
         result.Coupon = cart.Coupon;
         result.Currency = cart.Currency;
@@ -39,6 +38,7 @@ public class QuoteConverter : IQuoteConverter
         result.DynamicProperties = cart.DynamicProperties?.Convert(FromCartDynamicProperties);
 
         result.Addresses = FromCartAddresses(cart);
+        result.ShipmentMethod = cart.Shipments?.FirstOrDefault()?.Convert(FromCartShipment);
 
         return result;
     }
@@ -62,7 +62,7 @@ public class QuoteConverter : IQuoteConverter
         result.DynamicProperties = quote.DynamicProperties?.Convert(ToCartDynamicProperties);
 
         result.Addresses = quote.Addresses?.Convert(ToCartAddresses);
-        result.Shipments = quote.ShipmentMethod?.Convert(x => ToCartShipments(x, result.Addresses));
+        result.Shipments = quote.ShipmentMethod?.Convert(x => ToCartShipments(x, result));
         result.Payments = ToCartPayments(quote, result.Addresses);
 
         return result;
@@ -104,16 +104,25 @@ public class QuoteConverter : IQuoteConverter
 
     protected virtual IList<QuoteAddress> FromCartAddresses(ShoppingCart cart)
     {
-        return (cart.Addresses ?? Array.Empty<CartAddress>())
-            .Concat(cart.Shipments?.Select(x => x.DeliveryAddress) ?? Array.Empty<CartAddress>())
-            .Concat(cart.Payments?.Select(x => x.BillingAddress) ?? Array.Empty<CartAddress>())
-            .Where(x => x != null)
-            .Select(FromCartAddress)
+        return FromCartAddresses(cart.Addresses)
+            .Concat(FromCartAddresses(cart.Shipments?.Select(x => x.DeliveryAddress), AddressType.Shipping))
+            .Concat(FromCartAddresses(cart.Payments?.Select(x => x.BillingAddress), AddressType.Billing))
             .Distinct()
             .ToList();
     }
 
-    protected virtual QuoteAddress FromCartAddress(CartAddress address)
+    protected virtual IEnumerable<QuoteAddress> FromCartAddresses(IEnumerable<CartAddress> addresses, AddressType? type = null)
+    {
+        if (addresses != null)
+        {
+            foreach (var address in addresses.Where(x => x != null))
+            {
+                yield return FromCartAddress(address, type);
+            }
+        }
+    }
+
+    protected virtual QuoteAddress FromCartAddress(CartAddress address, AddressType? type)
     {
         var result = AbstractTypeFactory<QuoteAddress>.TryCreateInstance();
 
@@ -133,6 +142,12 @@ public class QuoteConverter : IQuoteConverter
         result.FirstName = address.FirstName;
         result.LastName = address.LastName;
         result.Organization = address.Organization;
+
+
+        if (type != null && !result.AddressType.HasFlag(type.Value))
+        {
+            result.AddressType = type.Value;
+        }
 
         return result;
     }
@@ -161,6 +176,15 @@ public class QuoteConverter : IQuoteConverter
         return result;
     }
 
+    protected virtual QuoteShipmentMethod FromCartShipment(Shipment shipment)
+    {
+        var result = AbstractTypeFactory<QuoteShipmentMethod>.TryCreateInstance();
+
+        result.ShipmentMethodCode = shipment.ShipmentMethodCode;
+        result.OptionName = shipment.ShipmentMethodOption;
+
+        return result;
+    }
 
     protected virtual IList<CartLineItem> ToCartItems(ICollection<QuoteItem> items)
     {
@@ -261,14 +285,14 @@ public class QuoteConverter : IQuoteConverter
         return result;
     }
 
-    protected virtual IList<Shipment> ToCartShipments(QuoteShipmentMethod shipmentMethod, ICollection<CartAddress> addresses)
+    protected virtual IList<Shipment> ToCartShipments(QuoteShipmentMethod shipmentMethod, ShoppingCart cart)
     {
         var shipment = AbstractTypeFactory<Shipment>.TryCreateInstance();
 
-        shipment.Currency = shipmentMethod.Currency;
         shipment.ShipmentMethodCode = shipmentMethod.ShipmentMethodCode;
         shipment.ShipmentMethodOption = shipmentMethod.OptionName;
-        shipment.DeliveryAddress = addresses.FirstOrDefault(x => x.AddressType == AddressType.Shipping);
+        shipment.Currency = cart.Currency;
+        shipment.DeliveryAddress = cart.Addresses.FirstOrDefault(x => x.AddressType.HasFlag(AddressType.Shipping));
 
         return new List<Shipment> { shipment };
     }
@@ -279,7 +303,7 @@ public class QuoteConverter : IQuoteConverter
 
         payment.Currency = quote.Currency;
         payment.Amount = quote.Totals?.GrandTotalInclTax ?? 0m;
-        payment.BillingAddress = addresses.FirstOrDefault(x => x.AddressType == AddressType.Billing);
+        payment.BillingAddress = addresses.FirstOrDefault(x => x.AddressType.HasFlag(AddressType.Billing));
 
         return new List<Payment> { payment };
     }
