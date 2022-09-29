@@ -1,46 +1,22 @@
-# QuoteExperienceApi
+# Virto Commerce Quote Experience API Module
+
+[![CI status](https://github.com/VirtoCommerce/vc-module-quote-experience-api/workflows/Module%20CI/badge.svg?branch=dev)](https://github.com/VirtoCommerce/vc-module-quote-experience-api/actions?query=workflow%3A"Module+CI") [![Quality gate](https://sonarcloud.io/api/project_badges/measure?project=VirtoCommerce_vc-module-quote-experience-api&metric=alert_status&branch=dev)](https://sonarcloud.io/dashboard?id=VirtoCommerce_vc-module-quote-experience-api) [![Reliability rating](https://sonarcloud.io/api/project_badges/measure?project=VirtoCommerce_vc-module-quote-experience-api&metric=reliability_rating&branch=dev)](https://sonarcloud.io/dashboard?id=VirtoCommerce_vc-module-quote-experience-api) [![Security rating](https://sonarcloud.io/api/project_badges/measure?project=VirtoCommerce_vc-module-quote-experience-api&metric=security_rating&branch=dev)](https://sonarcloud.io/dashboard?id=VirtoCommerce_vc-module-quote-experience-api) [![Sqale rating](https://sonarcloud.io/api/project_badges/measure?project=VirtoCommerce_vc-module-quote-experience-api&metric=sqale_rating&branch=dev)](https://sonarcloud.io/dashboard?id=VirtoCommerce_vc-module-quote-experience-api)
 
 ## Overview
 
-Short overview of what the new module is.
+This module provides queries and mutations for working with quotes via GraphQL.
 
-- What is the new or updated experience?
+## Documentation
+* [Quote Experience API Module Documentation](https://virtocommerce.com/docs/latest/modules/quote-experience-api/)
+* [View on GitHub](docs/index.md)
 
-- Does this module replace an existing module/experience? If yes, what is the transition plan?
+## References
 
-- Does this module has dependency on other ? If yes, list/explain the dependencies.
-
-- List the key deployment scenarios - why would people use this module?
-
-## Functional Requirements
-
-Short description of the new module functional requirements.
-
-## Scenarios
-
-List of scenarios that the new module implements
-
-1. [Scenario 1](/doc/scenario-name1.md)
-1. [Scenario 2](/doc/scenario-name2.md)
-1. [Scenario 3](/doc/scenario-name3.md)
-    1. [Scenario 3.1](/doc/scenario-name31.md)
-    1. [Scenario 3.2](/doc/scenario-name32.md)
-1. [Scenario 4](/doc/scenario-name4.md)
-
-## Web API
-
-Web API documentation for each module is built out automatically and can be accessed by following the link bellow:
-<https://link-to-swager-api>
-
-## Database Model
-
-![DB model](./docs/media/diagram-db-model.png)
-
-## Related topics
-
-[Some Article1](some-article1.md)
-
-[Some Article2](some-article2.md)
+* Deploy: https://virtocommerce.com/docs/latest/developer-guide/deploy-module-from-source-code/
+* Installation: https://www.virtocommerce.com/docs/latest/user-guide/modules/
+* Home: https://virtocommerce.com
+* Community: https://www.virtocommerce.org
+* [Download Latest Release](https://github.com/VirtoCommerce/vc-module-quote-experience-api/releases/latest)
 
 ## License
 
@@ -50,7 +26,7 @@ Licensed under the Virto Commerce Open Software License (the "License"); you
 may not use this file except in compliance with the License. You may
 obtain a copy of the License at
 
-<http://virtocommerce.com/opensourcelicense>
+http://virtocommerce.com/opensourcelicense
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
