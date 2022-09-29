@@ -6,14 +6,14 @@ The X-Quote module provides queries and mutations for working with quotes via Gr
 ### Queries
 
 |#|Endpoint|Arguments|Returns|Description|
-|-|-|-|-|
+|-|-|-|-|-|
 |1|[quote](#quote)|`id`|Quote|Get quote by ID|
 |2|[quotes](#quotes)|`customerId` `keyword` `sort` `after` `first`|Paginated quote list|Search for quotes|
 
 ### Mutations
 
 |#|Endpoint|Arguments|Returns|Description|
-|-|-|-|-|
+|-|-|-|-|-|
 |1|[createQuoteFromCart](#createQuoteFromCart)|`cartId` `comment`|Quote|Create quote and delete cart|
 |2|[confirmQuote](#confirmQuote)|`id`|Order|Confirm quote and create order|
 |3|[rejectQuote](#rejectQuote)|`id`|Quote|Reject quote|
