@@ -6,6 +6,14 @@
 
 This module provides queries and mutations for working with quotes via GraphQL.
 
+## Notes
+This is a preview module, it should not be used in production.
+
+Known limitations:
+* When creating a quote from the cart, the shipment price is not saved.
+* When confirming a quote, the ManualShippingTotal is not saved to the order.
+* When confirming or rejecting a quote, there is no permission check.
+
 ## Documentation
 * [Quote Experience API Module Documentation](https://virtocommerce.com/docs/latest/modules/quote-experience-api/)
 * [View on GitHub](docs/index.md)
