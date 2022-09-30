@@ -21,7 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\VirtoCommerce.QuoteExperienceApi.Core\VirtoCommerce.QuoteExperienceApi.Core.csproj" />
     <ProjectReference Include="..\..\src\VirtoCommerce.QuoteExperienceApi.Data\VirtoCommerce.QuoteExperienceApi.Data.csproj" />
     <ProjectReference Include="..\..\src\VirtoCommerce.QuoteExperienceApi.Web\VirtoCommerce.QuoteExperienceApi.Web.csproj" />
   </ItemGroup>
